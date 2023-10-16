@@ -1,0 +1,332 @@
+//header
+.header {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+
+    .headerBox {
+        display: flex;
+        max-width: 1200px;
+        margin: auto;
+        position: relative;
+
+        .pagetitle {
+            width: max-content;
+            height: max-content;
+            margin: auto 0;
+            padding: 0 5px;
+
+            h1 {
+                font-size: 2.5rem;
+                text-align: center;
+                line-height: 1;
+
+                span {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        .icons {
+            display: flex;
+            margin: 0 0 auto auto;
+
+            @media (min-width:768px) {
+                .icon:nth-child(3) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    height: 20px;
+    line-height: 20px;
+}
+
+//menu
+.menu {
+    position: absolute;
+    right: 5px;
+    top: 35px;
+    width: 150px;
+    transition: all 0.25s ease-in-out;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px var(--main);
+
+    @media (min-width:768px) {
+        position: unset;
+        width: max-content;
+        background-color: unset;
+        box-shadow: none;
+
+        .dividers {
+            display: flex;
+            height: max-content;
+            margin-top: 40px;
+
+            .divider {
+                width: 100px;
+            }
+        }
+    }
+}
+
+.menuClose {
+    right: -160px;
+}
+
+//page
+.page {
+    padding-top: 80px;
+
+    .leftCol {
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        padding: 50px 0;
+
+        img {
+            height: 50vw;
+        }
+    }
+
+    .rightCol {
+        width: 80%;
+        margin: 0 auto;
+        max-width: 768px;
+        text-align: justify;
+        line-height: 1.5;
+
+        .title {
+
+            h1 {
+                margin-top: 50px;
+                margin-bottom: 15px;
+                padding-bottom: 5px;
+                border-bottom: 5px solid;
+            }
+        }
+
+        .component {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 25px 0
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            text-align: justify;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        h5 {
+            text-align: right;
+            padding-bottom: 25px;
+        }
+
+        .contents {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    @media (min-width:992px) {
+        display: flex;
+        height: calc(100vh - 80px);
+
+        .leftCol {
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            padding: 0;
+            border-radius: 5px;
+
+            img {
+                height: 30vw;
+                max-height: 575px;
+                margin: auto;
+            }
+        }
+
+        .rightCol {
+            min-height: 100%;
+            overflow-y: scroll;
+            width: 50%;
+
+            .title {
+                position: relative;
+                min-height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: 5%;
+                font-size: calc(1rem + 5%);
+                width: 80%;
+                margin: auto;
+            }
+
+
+            .title::after {
+                content: "";
+                position: absolute;
+                width: 50%;
+                border-bottom: 1px dashed;
+                bottom: 5px;
+                left: 25%;
+            }
+
+            .contents {
+                width: 80%;
+                margin: auto;
+                min-height: 100%;
+                font-size: calc(1rem + 5%);
+                font-weight: 500;
+                line-height: 1.5;
+                padding: 20px 0;
+                text-align: justify;
+
+                div {
+                    position: relative;
+                    min-height: calc(100vh - 80px);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    max-width: inherit;
+                    padding: 20px 0;
+
+                }
+
+                div::after {
+                    content: "";
+                    position: absolute;
+                    width: 50%;
+                    border-bottom: 1px dashed;
+                    bottom: 0;
+                    left: 25%;
+
+                }
+            }
+
+        }
+
+        .rightCol::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+}
+
+//formCard
+.formcard {
+    width: 100%;
+    margin: auto;
+    max-width: 300px;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+
+}
+
+//parallaxs
+.parallaxs {
+    width: 100%;
+    overflow: scroll;
+
+    cursor: grab;
+
+    .parallax {
+        display: flex;
+        flex-wrap: wrap;
+        width: 3000px;
+        min-height: calc(100vh);
+
+        .item {
+            width: 10%;
+            height: max-content
+        }
+    }
+}
+
+.parallaxs:active {
+    cursor: grabbing;
+}
+
+.parallaxs::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+//bookCard
+.bookCard {
+    aspect-ratio: 1.1/1;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px;
+    padding: 5%;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    .picture {
+        height: 75%;
+        text-align: center;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            transition: all 0.25s;
+        }
+    }
+
+    .title {
+        height: 25%;
+        text-align: center;
+        font-size: 0.85rem;
+        padding-top: 10px;
+
+        .name {
+            margin-bottom: 2.5px;
+        }
+
+        .genre {
+            opacity: 0.5;
+        }
+    }
+}
+
+.bookCard:hover {
+    background-color: rgba($color: white, $alpha: 1);
+    color: var(--dark);
+
+    .picture {
+        img {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.hover_light {
+    // box-shadow: 0px 0px 15px rgba($color: black, $alpha: 0.15);
+}
+
+.hover_dark {
+    // box-shadow: 0px 0px 15px rgba($color: white, $alpha: 0.15);
+    // background-color: rgba($color: white, $alpha: 1);
+}
