@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/style/style.css'
 import ThemeProvider from '@/context/themeContext'
+import UserProvider from '@/context/UserContent'
 import Header from '@/item/header'
 import Footer from '@/item/footer'
 const inter = Inter({ subsets: ['latin'] })
@@ -20,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <UserProvider>
+          <ThemeProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </UserProvider>
       </body>
     </html>
   )

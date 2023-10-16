@@ -24,6 +24,5 @@ export default async function handler(
             body.success = true
             body.data = data
             res.json(body)
-
         })
 }

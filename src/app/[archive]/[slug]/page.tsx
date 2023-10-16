@@ -1,7 +1,6 @@
 'use client'
 import Loading from '@/app/loading'
 import NotFound from '@/app/not-found'
-import { BookType } from '@/item/PageDetail'
 import PageDetail from '@/item/PageDetail'
 import { error } from 'console'
 import React, { useEffect, useState } from 'react'

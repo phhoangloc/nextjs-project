@@ -4,7 +4,7 @@ import { ThemeContext } from '@/context/themeContext'
 import './style.css'
 
 
-export type BookType = {
+export type PageType = {
 
     img?: string
     name?: string,
@@ -13,7 +13,7 @@ export type BookType = {
     component?: React.ReactNode
 }
 
-const PageDetail = ({ img, detail, name, author, component }: BookType) => {
+const PageDetail = ({ img, detail, name, author, component }: PageType) => {
 
     const { theme }: any = useContext(ThemeContext)
 

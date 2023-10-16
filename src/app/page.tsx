@@ -9,7 +9,6 @@ export default function Home() {
   const [blog, setBlog] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
-
   const getBook = () => {
     setLoading(true)
 

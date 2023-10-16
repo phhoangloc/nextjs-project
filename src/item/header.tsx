@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Icon from '@/component/Icon';
 import { useContext, useState } from 'react';
 import { ThemeContext } from '@/context/themeContext';
+import { UserContext } from '@/context/UserContent';
 import Menu from './menu';
 import Link from 'next/link';
 
@@ -15,6 +16,8 @@ type Props = {}
 
 const Header = (props: Props) => {
     const { theme, toggleTheme }: any = useContext(ThemeContext)
+    const { id, infor }: any = useContext(UserContext)
+    console.log(infor)
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
     const [value, setValue] = useState<string>("menu")
 
