@@ -1,10 +1,11 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
-
+import { useState, useEffect } from 'react'
 import Loading from "./loading"
 import Paralax from "@/item/paralax"
 
 export default function Home() {
+
+
   const [book, setBook] = useState<any[]>([])
   const [blog, setBlog] = useState<any[]>([])
   const [loading, setLoading] = useState<boolean>(true)
@@ -34,13 +35,16 @@ export default function Home() {
     getBook(), getBlog()
   }, [])
 
-
   //return component
   const reCom =
     loading ?
       <Loading /> :
       <div className='main'>
-        <Paralax data={[...book, ...blog]} />
+        <Paralax data={[...book, ...blog].sort(function (a, b) {
+          const dateA = new Date(a.createDay);
+          const dateB = new Date(b.createDay);
+          return dateA > dateB ? 1 : -1;
+        })} />
       </div>
 
   return reCom

@@ -10,11 +10,12 @@ type Props = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     checkicon?: React.ReactNode,
     closefunc: () => void,
-    checkfunc: () => void
+    checkfunc: () => void,
+    warn?: string
 }
 
 
-const Input = ({ type, name, value, onChange, checkicon, closefunc, checkfunc }: Props) => {
+const Input = ({ type, name, value, onChange, checkicon, closefunc, checkfunc, warn }: Props) => {
     const [focus, setFocus] = useState<boolean>(false)
     const [check, setCheck] = useState<boolean>(false)
     return (
@@ -35,6 +36,7 @@ const Input = ({ type, name, value, onChange, checkicon, closefunc, checkfunc }:
                     {checkicon ? checkicon : <CheckIcon />}
                 </div>
             </div>
+            {warn ? <p className='warn'>{warn}</p> : null}
         </div>
     )
 }

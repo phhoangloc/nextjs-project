@@ -1,25 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import connectMongoDB from '@/connect/database/mogoseDB'
 import { userModel } from '@/model/user.model'
-
+import { isStringType } from '@/type/resultType';
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-type resultData = {
-    success: boolean,
-    message: string,
-    token?: string
-}
+
 
 const login = async (
     req: NextApiRequest,
-    res: NextApiResponse<resultData>
+    res: NextApiResponse
 ) => {
 
     connectMongoDB()
 
     if (req.method === 'POST') {
-        let result: resultData
+        let result: isStringType
         const body = req.body
 
         const username = body.username
@@ -56,7 +52,7 @@ const login = async (
                     result = {
                         success: true,
                         message: "login success!",
-                        token: token,
+                        result: token,
                     }
 
                     res.json(result)

@@ -8,6 +8,7 @@ type Props = {
 }
 
 const Log = ({ params }: Props) => {
+
     return <PageDetail
         img={'/img/login.jpg'}
         component={

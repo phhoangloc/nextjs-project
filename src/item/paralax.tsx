@@ -11,6 +11,13 @@ type ParalaxType = {
 const Paralax = ({ data }: ParalaxType) => {
     const { theme }: any = useContext(ThemeContext)
 
+    const mainRef: React.MutableRefObject<any> = useRef({ scrollTop: 0, scrollLeft: 0 })
+    const parallaxLoad = () => {
+        mainRef.current.scrollLeft = 0
+        mainRef.current.scrollTop = 0
+        setScrollStartX(mainRef.current.scrollLeft);
+        setScrollStartY(mainRef.current.scrollTop);
+    };
     const [mouseDown, setMouseDown] = useState<boolean>(false)
     const [scrollStartX, setScrollStartX] = useState<number>(0)
     const [scrollStartY, setScrollStartY] = useState<number>(0)
@@ -20,14 +27,13 @@ const Paralax = ({ data }: ParalaxType) => {
     }
     const [mousePositionStart, setMousePositionStart] = useState<mousePositionType>({ x: 0, y: 0 })
 
-    const mainRef: React.MutableRefObject<any> = useRef({ scrollTop: 0, scrollLeft: 0 })
-
     const getMousePosition = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (mouseDown) {
             mainRef.current.scrollLeft = scrollStartX + (mousePositionStart.x - e.clientX) * 0.9
             mainRef.current.scrollTop = scrollStartY + (mousePositionStart.y - e.clientY) * 0.9
         }
     }
+
     const reCom =
         <div className="parallaxs"
             ref={mainRef}
@@ -37,7 +43,9 @@ const Paralax = ({ data }: ParalaxType) => {
                 setScrollStartX(mainRef.current.scrollLeft);
                 setScrollStartY(mainRef.current.scrollTop);
             }}
-            onMouseMove={(e) => getMousePosition(e)}>
+            onMouseMove={(e) => getMousePosition(e)}
+            onLoad={() => parallaxLoad()}
+        >
             {data.length ?
                 <div className={`parallax ${theme === "light" ? "lightBackground" : "darkBackground"}`}>
                     {data.map((item: any, index: any) =>

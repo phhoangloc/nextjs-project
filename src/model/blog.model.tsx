@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const blogSchema = Schema({
+const blogSchema = new Schema({
     genre: {
         type: String,
         default: "blog",

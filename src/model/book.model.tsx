@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const bookSchema = Schema({
+const bookSchema = new Schema({
     genre: {
         type: String,
         default: "book",

@@ -1,8 +1,7 @@
 import mongoose from "mongoose"
 
 const connectMongoDB = async () => {
-
-    await mongoose.connect("mongodb+srv://lockheart:RAZz8rsNILo88Smq@cluster0.qs9wtoh.mongodb.net/mybook?retryWrites=true&w=majority")
+    await mongoose.connect(`${process.env.MONGODB_URL}`)
         .catch((error) => {
             throw error.message
         })

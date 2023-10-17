@@ -1,16 +1,16 @@
-GET http://localhost:3000/api/blog
+GET http://localhost:3000/api/active?email=h-loc@astem-co.co.jp
+
 ###
 
 POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "username":"hoangloc",
+    "username":"newmem",
     "password":"123456"
 }
 ###
 
 GET http://localhost:3000/api/auth/auth
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzQ0MzkyOSwiZXhwIjoxNjk3NTMwMzI5fQ.-UKTScEuVYaZrRTUvxlDqkgsCwTRQSp9Rw3wXaZTcpc
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmU1OTVjMGZjMmMzNGVjMDlmOTU3ZSIsImlhdCI6MTY5NzUzNjg0OCwiZXhwIjoxNjk3NjIzMjQ4fQ.0SkEl4W8ySQ24uH-PRZh0Wr9mMzsXHDa1IDfK8GggTI

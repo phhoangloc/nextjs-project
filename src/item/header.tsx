@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.css'
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -8,18 +8,19 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Icon from '@/component/Icon';
 import { useContext, useState } from 'react';
 import { ThemeContext } from '@/context/themeContext';
-import { UserContext } from '@/context/UserContent';
+import { UserContext } from '@/context/UserContext';
 import Menu from './menu';
 import Link from 'next/link';
 
-type Props = {}
-
-const Header = (props: Props) => {
+const Header = () => {
     const { theme, toggleTheme }: any = useContext(ThemeContext)
-    const { id, infor }: any = useContext(UserContext)
-    console.log(infor)
+    const { i, id, infor, UserFecth }: any = useContext(UserContext)
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
     const [value, setValue] = useState<string>("menu")
+
+    useEffect(() => {
+        localStorage && localStorage.token && UserFecth()
+    }, [i])
 
     return (
         <div className={`header ${theme === "light" ? "light" : "dark"}`}>
@@ -33,7 +34,7 @@ const Header = (props: Props) => {
                         <Icon data={[{ icon: <DarkModeIcon /> }, { icon: <LightModeIcon /> }]} func={() => toggleTheme()} />
                     </div>
                     <div className="icon">
-                        <Icon data={[{ icon: <PersonIcon /> }]} func={() => {
+                        <Icon data={id ? [{ icon: <img src={`/img/avata/${infor.avata}`} /> }] : [{ icon: <PersonIcon /> }]} func={() => {
                             setValue("account")
                             menuOpen && value === "account" ? (setMenuOpen(!menuOpen), window.innerWidth > 768 && setValue("menu")) : setMenuOpen(true)
                         }} />

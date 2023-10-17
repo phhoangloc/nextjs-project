@@ -1,34 +1,32 @@
-const jwt = require('jsonwebtoken')
 import { NextApiRequest, NextApiResponse } from "next"
 import { userModel } from "@/model/user.model"
 import connectMongoDB from "@/connect/database/mogoseDB"
+import { isDataType } from "@/type/resultType"
 
-type resultData = {
-    success: boolean,
-    message?: string,
-    data?: any
-}
+const jwt = require('jsonwebtoken')
 
 const Auth =
     async (
         req: NextApiRequest,
-        res: NextApiResponse<resultData>,
+        res: NextApiResponse
     ) => {
         connectMongoDB()
-        let body: resultData = { success: false };
+        let body: isDataType = { success: false };
         const authorization = req.headers['authorization']
         const token = authorization && authorization.split(" ")[1]
         const id = await jwt.verify(token, 'secretToken').id
-        await userModel.findOne({ "_id": id }, "infor username")
+        await userModel.findOne({ "_id": id }, "infor username books blogs")
+            .populate("books", "name")
+            .populate("blogs", "title")
             .catch((error: Error) => {
                 body.success = false,
                     body.message = error.message
                 res.json(body)
             })
-            .then((data: any) => {
+            .then((result: any) => {
                 body.success = true
-                body.message = "welcome to " + data.username;
-                body.data = data
+                body.message = "welcome!"
+                body.data = result
                 res.json(body)
             })
     }

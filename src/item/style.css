@@ -224,13 +224,13 @@
   width: 100%;
   overflow: scroll;
   cursor: grab;
+  height: calc(100vh - 100px);
 }
 
 .parallaxs .parallax {
   display: flex;
   flex-wrap: wrap;
   width: 3000px;
-  min-height: calc(100vh);
 }
 
 .parallaxs .parallax .item {
@@ -255,6 +255,8 @@
   padding: 5%;
   cursor: pointer;
   transition: all 0.25s;
+  animation: hidden 0.5s ease-out;
+  opacity: 0.9;
 }
 
 .bookCard .picture {
@@ -286,8 +288,20 @@
 .bookCard:hover {
   background-color: white;
   color: var(--dark);
+  opacity: 1;
 }
 
 .bookCard:hover .picture img {
   transform: scale(1.05);
+}
+
+@keyframes hidden {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateY(0px);
+  }
 }

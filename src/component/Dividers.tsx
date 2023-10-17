@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation'
 type Props = {
     data: {
         name: string,
-        url: string
+        url: string,
+        itemfunc?: () => void
     }[],
     func?: () => void
 }
@@ -17,7 +18,7 @@ const Dividers = ({ data, func }: Props) => {
                 data.map((item, index) =>
                     <div className='divider'
                         key={index}
-                        onClick={() => { func && func(); router.push(item.url) }}>
+                        onClick={() => { item.itemfunc && item.itemfunc(); func && func(); router.push(item.url) }}>
                         {item.name}
                     </div>
                 )
