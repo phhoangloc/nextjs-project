@@ -1,6 +1,7 @@
 import React, { useContext, useState, } from 'react'
 import { ThemeContext } from '@/context/themeContext'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 export type BookCardType = {
     img: string,
     name: string,
@@ -21,7 +22,7 @@ const BookCard = ({ img, name, genre, slug }: BookCardType) => {
             onMouseLeave={() => setHover(false)}
             onClick={() => router.push(slug)}>
             <div className="picture">
-                <img src={`/img/${genre === "book" ? "bookcover" : "blog"}/${img}`} alt="" />
+                <Image src={`/img/${genre === "book" ? "bookcover" : "blog"}/${img}`} alt="" width={500} height={500} />
             </div>
             <div className="title">
                 <p className='name'>{name}</p>

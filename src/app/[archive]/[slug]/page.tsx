@@ -43,7 +43,7 @@ const BookDetial = ({ params }: Props) => {
     useEffect(() => {
         params.archive === "book" && getBook(params.slug)
         params.archive === "blog" && getBlog(params.slug)
-    }, [])
+    }, [params.slug, params.archive])
     if (err) {
         return <NotFound error={err.toString()} />
     }

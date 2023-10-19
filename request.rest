@@ -1,4 +1,4 @@
-GET http://localhost:3000/api/active?email=h-loc@astem-co.co.jp
+GET http://localhost:3000/api/book
 
 ###
 
@@ -11,6 +11,37 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:3000/api/auth/auth
+GET http://localhost:3000/api/auth/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MmU1OTVjMGZjMmMzNGVjMDlmOTU3ZSIsImlhdCI6MTY5NzUzNjg0OCwiZXhwIjoxNjk3NjIzMjQ4fQ.0SkEl4W8ySQ24uH-PRZh0Wr9mMzsXHDa1IDfK8GggTI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzU5NDE5MiwiZXhwIjoxNjk3NjgwNTkyfQ.l0bMvSr4ZKiqMgMmIuYcXEUhycs98Lu0x6UJmDlikyk
+
+{
+    "infor":{
+        "fullname": "hello",
+        "avata": "images.jpg",
+        "address": "",
+        "phone": ""
+    }
+
+}
+###
+
+GET http://localhost:3000/api/auth/book?id=6530eaa7bd23552513e6f648
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzY3ODg2OCwiZXhwIjoxNjk3NzY1MjY4fQ.gVxup-3H-eMHRVr9KRT3MkPFfpQK4Vj9Uc0NRNKq6H4
+###
+
+POST http://localhost:3000/api/auth/book
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzY3ODg2OCwiZXhwIjoxNjk3NzY1MjY4fQ.gVxup-3H-eMHRVr9KRT3MkPFfpQK4Vj9Uc0NRNKq6H4
+
+{
+        "name": "Sách mới  ",
+        "author": "Lộc",
+        "slug": "newbook"
+}
+
+###
+DELETE  http://localhost:3000/api/auth/book?id=6530eaa7bd23552513e6f648
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzY3ODg2OCwiZXhwIjoxNjk3NzY1MjY4fQ.gVxup-3H-eMHRVr9KRT3MkPFfpQK4Vj9Uc0NRNKq6H4

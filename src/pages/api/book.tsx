@@ -9,26 +9,31 @@ export default async function handler(
 ) {
     let body: isDataType = { success: false }
     const query = req.query
+    const method = req.method
 
     connectMongoDB()
 
-    await bookModel.find({})
-        .find(query.slug ? { "slug": req.query.slug } : {})
-        .find(query.name ? { "name": query.name } : {})
-        .find(query.search ? { "name": { $regex: query.search } } : {})
-        .find(query.author ? { "author": query.author } : {})
-        .sort(query.sort ? query.sort : {})
-        .limit(query.limit ? query.limit : {})
-        .populate("owner", "username")
-        .catch((error: Error) => {
-            body.success = false
-            body.message = error.message
-            res.json(body)
-        })
-        .then((data: any) => {
-            body.success = true
-            body.data = data
-            res.json(body)
+    switch (method) {
+        case "GET":
+            await bookModel.find({})
+                .find(query.slug ? { "slug": req.query.slug } : {})
+                .find(query.name ? { "name": query.name } : {})
+                .find(query.search ? { "name": { $regex: query.search } } : {})
+                .find(query.author ? { "author": query.author } : {})
+                .sort(query.sort ? query.sort : {})
+                .limit(query.limit ? query.limit : {})
+                .populate("owner", "username")
+                .catch((error: Error) => {
+                    body.success = false
+                    body.message = error.message
+                    res.json(body)
+                })
+                .then((data: any) => {
+                    body.success = true
+                    body.data = data
+                    res.json(body)
 
-        })
+                })
+
+    }
 }

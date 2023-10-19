@@ -32,7 +32,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getBook(), getBlog()
+    getBook();
+    getBlog()
   }, [])
 
   //return component

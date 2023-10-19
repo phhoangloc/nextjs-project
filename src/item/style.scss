@@ -91,6 +91,7 @@
 
         img {
             height: 50vw;
+            width: inherit;
         }
     }
 
@@ -155,9 +156,10 @@
             border-radius: 5px;
 
             img {
-                height: 30vw;
+                height: inherit;
                 max-height: 575px;
                 margin: auto;
+                width: auto;
             }
         }
 
@@ -240,7 +242,16 @@
         margin-bottom: 15px;
     }
 
+    .avata {
+        display: flex;
+        position: relative;
 
+        svg {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+        }
+    }
 }
 
 //parallaxs
@@ -292,6 +303,7 @@
 
         img {
             height: 100%;
+            width: inherit;
             transition: all 0.25s;
         }
     }
@@ -308,6 +320,12 @@
 
         .genre {
             opacity: 0.5;
+        }
+    }
+
+    h1 {
+        svg {
+            cursor: pointer
         }
     }
 }

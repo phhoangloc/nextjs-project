@@ -1,16 +1,9 @@
 'use client'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-type Props = {
-    data: {
-        name: string,
-        url: string,
-        itemfunc?: () => void
-    }[],
-    func?: () => void
-}
+import { DividersType } from '@/type/componentType'
 
-const Dividers = ({ data, func }: Props) => {
+const Dividers = ({ data, func }: DividersType) => {
     const router = useRouter()
     return (
         <div className='dividers'>
@@ -18,8 +11,12 @@ const Dividers = ({ data, func }: Props) => {
                 data.map((item, index) =>
                     <div className='divider'
                         key={index}
-                        onClick={() => { item.itemfunc && item.itemfunc(); func && func(); router.push(item.url) }}>
-                        {item.name}
+                        onClick={() => {
+                            item && item.url && router.push(item.url)
+                            item && item.itemfunc && item.itemfunc();
+                            func && func();
+                        }}>
+                        <p className='name'>{item.name}</p>
                     </div>
                 )
             }

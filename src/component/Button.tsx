@@ -1,11 +1,8 @@
 import React from 'react'
 import './style.css'
-type Props = {
-    name: string,
-    onClick: () => void
-}
+import { ButtonType } from '@/type/componentType'
 
-const Button = ({ name, onClick }: Props) => {
+const Button = ({ name, onClick }: ButtonType) => {
     return (
         <div className='button'>
             <button onClick={() => onClick()}>{name}</button>

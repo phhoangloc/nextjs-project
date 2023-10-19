@@ -1,15 +1,9 @@
 'use client'
 import React, { useState } from 'react'
 import "./style.css"
+import { IconType } from '@/type/componentType'
 
-type Props = {
-    data: {
-        icon: React.ReactNode,
-    }[],
-    func?: () => void
-}
-
-const Icon = ({ data, func }: Props) => {
+const Icon = ({ data, func }: IconType) => {
 
     const [i, setI] = useState<number>(0)
 

@@ -34,20 +34,15 @@ const Book = ({ params }: Props) => {
             })
     }
 
-    const switchpage = (page: any) => {
-        switch (page) {
-            case "book":
-                getBook()
-            case "blog":
-                getBlog()
-            default:
-                break;
-        }
-    }
 
     useEffect(() => {
-        switchpage(params.archive)
-    }, [])
+        if (params.archive === "book") {
+            getBook()
+        }
+        if (params.archive === "blog") {
+            getBlog()
+        }
+    }, [params, params.archive])
 
     switch (params.archive) {
         case "book":

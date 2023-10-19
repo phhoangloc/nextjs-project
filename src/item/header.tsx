@@ -11,15 +11,17 @@ import { ThemeContext } from '@/context/themeContext';
 import { UserContext } from '@/context/UserContext';
 import Menu from './menu';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Header = () => {
+
     const { theme, toggleTheme }: any = useContext(ThemeContext)
-    const { i, id, infor, UserFecth }: any = useContext(UserContext)
+    const { i, id, infor, UserFecth, NoFecth }: any = useContext(UserContext)
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
     const [value, setValue] = useState<string>("menu")
 
     useEffect(() => {
-        localStorage && localStorage.token && UserFecth()
+        localStorage && localStorage.token ? UserFecth() : NoFecth()
     }, [i])
 
     return (
@@ -34,10 +36,17 @@ const Header = () => {
                         <Icon data={[{ icon: <DarkModeIcon /> }, { icon: <LightModeIcon /> }]} func={() => toggleTheme()} />
                     </div>
                     <div className="icon">
-                        <Icon data={id ? [{ icon: <img src={`/img/avata/${infor.avata}`} /> }] : [{ icon: <PersonIcon /> }]} func={() => {
-                            setValue("account")
-                            menuOpen && value === "account" ? (setMenuOpen(!menuOpen), window.innerWidth > 768 && setValue("menu")) : setMenuOpen(true)
-                        }} />
+                        <Icon data={
+                            id ?
+                                infor.avata ?
+                                    [{ icon: <Image src={"/img/avata/" + infor.avata} width={50} height={50} alt='' /> }] :
+                                    [{ icon: <Image src={"/img/avata/avatar.png"} width={50} height={50} alt='' /> }] :
+                                [{ icon: <PersonIcon /> }]
+                        }
+                            func={() => {
+                                setValue("account")
+                                menuOpen && value === "account" ? (setMenuOpen(!menuOpen), window.innerWidth > 768 && setValue("menu")) : setMenuOpen(true)
+                            }} />
                     </div>
                     <div className="icon">
                         <Icon data={[{ icon: <MenuIcon /> }]} func={() => {

@@ -90,6 +90,7 @@
 
 .page .leftCol img {
   height: 50vw;
+  width: inherit;
 }
 
 .page .rightCol {
@@ -149,9 +150,10 @@
     border-radius: 5px;
   }
   .page .leftCol img {
-    height: 30vw;
+    height: inherit;
     max-height: 575px;
     margin: auto;
+    width: auto;
   }
   .page .rightCol {
     min-height: 100%;
@@ -220,6 +222,17 @@
   margin-bottom: 15px;
 }
 
+.formcard .avata {
+  display: flex;
+  position: relative;
+}
+
+.formcard .avata svg {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+}
+
 .parallaxs {
   width: 100%;
   overflow: scroll;
@@ -267,6 +280,7 @@
 
 .bookCard .picture img {
   height: 100%;
+  width: inherit;
   transition: all 0.25s;
 }
 
@@ -283,6 +297,10 @@
 
 .bookCard .title .genre {
   opacity: 0.5;
+}
+
+.bookCard h1 svg {
+  cursor: pointer;
 }
 
 .bookCard:hover {

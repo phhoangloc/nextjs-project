@@ -6,8 +6,6 @@ import Input from '@/component/Input'
 import React, { useState, useContext, useEffect } from 'react'
 import { UserContext } from '@/context/UserContext'
 import { useRouter } from 'next/navigation'
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 type Props = {
     name: string;
     func: (i: any) => void
@@ -27,8 +25,8 @@ const FormCard = ({ name }: Props) => {
     }
 
     useEffect(() => {
-        validateForm();
-    }, [username, email, password]);
+        validateForm && validateForm();
+    }, [username, password, email]);
 
     const validateForm = async () => {
         let errors: { username?: string, password?: string, email?: string } = {}
@@ -105,14 +103,12 @@ const FormCard = ({ name }: Props) => {
                         name='username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        closefunc={() => setUsername("")}
-                        checkfunc={() => setUsername(username)} />
+                    />
                     <Input type='password'
                         name='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        closefunc={() => setPassword("")}
-                        checkfunc={() => setPassword(password)} />
+                    />
                     <Button name='Log In' onClick={() => login(inputBody)} />
                 </div>
             )
@@ -124,22 +120,17 @@ const FormCard = ({ name }: Props) => {
                         name='username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        closefunc={() => setUsername("")}
-                        checkfunc={() => setUsername(username)}
                         warn={Error.username} />
                     <Input type='password'
                         name='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        closefunc={() => setPassword("")}
-                        checkfunc={() => setPassword(password)}
+
                         warn={Error.password} />
                     <Input type='email'
                         name='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        closefunc={() => setEmail("")}
-                        checkfunc={() => setEmail(email)}
                         warn={Error.email} />
                     {!isError ? <Button name='Sign Up' onClick={() => signup({ username, password, email })} /> : null}
                 </div>

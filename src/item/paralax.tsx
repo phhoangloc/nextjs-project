@@ -55,9 +55,7 @@ const Paralax = ({ data }: ParalaxType) => {
                         </div>
                     )}
                 </div> :
-                <div className='parallax'>
-                    don't see any book
-                </div>}
+                <div className='parallax'><h1>dont see any book</h1></div>}
         </div>
 
     return reCom

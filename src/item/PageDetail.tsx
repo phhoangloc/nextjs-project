@@ -2,11 +2,11 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '@/context/themeContext'
 import './style.css'
-
+import ButtonUpload from '@/component/ButtonUpload'
+import Image from 'next/image'
 
 export type PageType = {
-
-    img?: string
+    img?: string,
     name?: string,
     author?: string,
     detail?: string | TrustedHTML
@@ -17,14 +17,12 @@ const PageDetail = ({ img, detail, name, author, component }: PageType) => {
 
     const { theme }: any = useContext(ThemeContext)
 
-
     return (
         <div className='main page'>
             <div className={`leftCol ${theme === "light" ? "lightPlus borderlight" : "darkPlus borderdark"}`}>
-                <img src={img} />
+                <Image src={img ? img : ""} alt='' width={500} height={500} />
             </div>
             <div className={`rightCol`}>
-
                 {(name || author) &&
                     <div className="title">
                         <h1>{name}</h1>

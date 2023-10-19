@@ -19,8 +19,8 @@ const Auth =
             .populate("books", "name")
             .populate("blogs", "title")
             .catch((error: Error) => {
-                body.success = false,
-                    body.message = error.message
+                body.success = false
+                body.message = error.message
                 res.json(body)
             })
             .then((result: any) => {
