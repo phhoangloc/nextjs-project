@@ -39,7 +39,7 @@ const Header = () => {
                         <Icon data={
                             id ?
                                 infor.avata ?
-                                    [{ icon: <Image src={"/img/avata/" + infor.avata} width={50} height={50} alt='' /> }] :
+                                    [{ icon: <Image src={infor.avata} width={50} height={50} alt='' /> }] :
                                     [{ icon: <Image src={"/img/avata/avatar.png"} width={50} height={50} alt='' /> }] :
                                 [{ icon: <PersonIcon /> }]
                         }

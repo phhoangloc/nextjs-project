@@ -170,7 +170,7 @@
 
             .title {
                 position: relative;
-                min-height: 100%;
+                height: calc(100vh - 100px);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -200,7 +200,7 @@
                 padding: 20px 0;
                 text-align: justify;
 
-                div {
+                .content {
                     position: relative;
                     min-height: calc(100vh - 80px);
                     display: flex;
@@ -211,15 +211,23 @@
 
                 }
 
-                div::after {
+                .content::after {
                     content: "";
                     position: absolute;
                     width: 50%;
                     border-bottom: 1px dashed;
                     bottom: 0;
                     left: 25%;
-
                 }
+            }
+
+            .component {
+                width: 100%;
+                min-height: calc(100vh);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 25px 0
             }
 
         }
@@ -252,6 +260,13 @@
             bottom: 10px;
         }
     }
+}
+
+//editcard
+.editcard {
+    width: 90%;
+    margin: auto;
+    max-width: unset;
 }
 
 //parallaxs

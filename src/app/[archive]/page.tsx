@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react'
 import Loading from '../loading'
 import Paralax from '@/item/paralax'
 import NotFound from '../not-found'
-import { BookCardType } from '@/item/bookCard'
-
+import { BookType } from '@/type/dataType'
+import { BlogType } from '@/type/dataType'
 type Props = {
     params: { archive: string }
 }
 
 const Book = ({ params }: Props) => {
-    const [book, setBook] = useState<BookCardType[]>([])
-    const [blog, setBlog] = useState<any[]>([])
+    const [book, setBook] = useState<BookType[]>([])
+    const [blog, setBlog] = useState<BlogType[]>([])
     const [loading, setLoading] = useState<boolean>(true)
     const getBook = () => {
         setLoading(true)

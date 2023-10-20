@@ -43,19 +43,28 @@ const EditInforCard = ({ data, preAvata }: Props) => {
         }
     }
 
-    const uploadImage = async () => {
-        const formData = new FormData();
-        formData.append("file", avataFile);
-        await fetch('http://localhost:3000/api/auth/image', {
-            method: 'POST',
-            body: formData,
-        })
-
+    const uploadImage = async (file: File) => {
+        if (file) {
+            const formData = new FormData();
+            formData.append("file", file);
+            return await fetch('http://localhost:3000/api/auth/image?pathname=img/avata', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    return data
+                })
+        } else {
+            return data.avata
+        }
     }
 
     const saveInfor = async (infor: any) => {
-        await uploadImage()
+        const imgName: string = await uploadImage(avataFile)
+        imgName ? infor.avata = imgName : null
         const body: any = { infor }
+
         await fetch('http://localhost:3000/api/auth/user',
             {
                 headers: {
@@ -80,7 +89,7 @@ const EditInforCard = ({ data, preAvata }: Props) => {
 
     return (
         <div className='formcard'>
-            <h1>infor {<EditIcon onClick={() => setEdit(!edit)} />}</h1>
+            <h3>infor {<EditIcon onClick={() => setEdit(!edit)} />}</h3>
             <Input
                 name='fullname'
                 onChange={(e) => setFullname(e.target.value)}
@@ -90,8 +99,8 @@ const EditInforCard = ({ data, preAvata }: Props) => {
             <div className="avata">
                 <Input
                     name='avata'
-                    onChange={(e) => setAvata(e.target.value)}
-                    value={avata}
+                    onChange={(e) => e}
+                    value={""}
                     dis={true}
                 />
                 {edit ? <ButtonUpload onChange={(e) => getFile(e)} /> : null}

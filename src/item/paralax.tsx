@@ -1,10 +1,12 @@
 'use client'
 import React, { useContext, useRef, useState } from 'react'
-import BookCard, { BookCardType } from './bookCard'
+import BookCard from './bookCard'
 import { ThemeContext } from '@/context/themeContext'
 import './style.css'
+import { BookType } from '@/type/dataType'
+import { BlogType } from '@/type/dataType'
 type ParalaxType = {
-    data: BookCardType[]
+    data: (BookType | BlogType)[]
 }
 
 
@@ -50,8 +52,8 @@ const Paralax = ({ data }: ParalaxType) => {
                 <div className={`parallax ${theme === "light" ? "lightBackground" : "darkBackground"}`}>
                     {data.map((item: any, index: any) =>
                         <div className="item" key={index}>
-                            {item.genre === "book" ? <BookCard name={item.name} img={item.img} genre={item.genre} slug={`book/${item.slug}`} /> : null}
-                            {item.genre === "blog" ? <BookCard name={item.title} img={item.cover} genre={item.genre} slug={`blog/${item.slug}`} /> : null}
+                            {item.genre === "book" ? <BookCard name={item.name} img={item.img} genre={item.genre} slug={`book/${item.slug}`} pdf='' author='' owner='' detail='' /> : null}
+                            {item.genre === "blog" ? <BookCard name={item.title} img={item.cover} genre={item.genre} slug={`blog/${item.slug}`} pdf='' author='' owner='' detail='' /> : null}
                         </div>
                     )}
                 </div> :

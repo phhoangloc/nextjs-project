@@ -49,22 +49,45 @@ const User =
                 }
                 break
             case 'POST':
-                body.owner = id
-                await bookModel.create(body)
-                    .catch((error: Error) => {
-                        result.success = false
-                        result.message = error.message
-                        res.send(result)
-                        throw error.message
-                    }).then(async (data: any) => {
-                        const newbook = [...user.books, data.id]
-                        await userModel.updateOne({ "_id": id }, { "books": newbook })
-                        result.success = true
-                        result.message = "your book is created"
-                        res.json(result)
-                    })
+                if (id) {
+                    body.owner = id
+                    await bookModel.create(body)
+                        .catch((error: Error) => {
+                            result.success = false
+                            result.message = error.message
+                            res.send(result)
+                            throw error.message
+                        }).then(async (data: any) => {
+                            const newbook = [...user.books, data.id]
+                            await userModel.updateOne({ "_id": id }, { "books": newbook })
+                            result.success = true
+                            result.message = "your book is created"
+                            res.json(result)
+                        })
+                } else {
+                    result.success = false
+                    result.message = "you dont have permission"
+                    res.json(result)
+                }
                 break
             case "PUT":
+                if (id) {
+                    await bookModel.updateOne({ "_id": query.id }, body)
+                        .catch((err: Error) => {
+                            result.success = false
+                            result.message = err.message
+                            res.json(result)
+                        })
+                        .then(async (data: any) => {
+                            result.success = true
+                            result.message = "you have update a book!"
+                            res.json(result)
+                        })
+                } else {
+                    result.success = false
+                    result.message = "you dont have permission"
+                    res.json(result)
+                }
                 break
             case "DELETE":
                 if (id) {
@@ -87,6 +110,7 @@ const User =
                     result.message = "you dont have permission"
                     res.json(result)
                 }
+                break
             default:
                 res.send("your method is not supplied")
         }

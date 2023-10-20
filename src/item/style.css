@@ -162,7 +162,7 @@
   }
   .page .rightCol .title {
     position: relative;
-    min-height: 100%;
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -189,7 +189,7 @@
     padding: 20px 0;
     text-align: justify;
   }
-  .page .rightCol .contents div {
+  .page .rightCol .contents .content {
     position: relative;
     min-height: calc(100vh - 80px);
     display: flex;
@@ -198,13 +198,21 @@
     max-width: inherit;
     padding: 20px 0;
   }
-  .page .rightCol .contents div::after {
+  .page .rightCol .contents .content::after {
     content: "";
     position: absolute;
     width: 50%;
     border-bottom: 1px dashed;
     bottom: 0;
     left: 25%;
+  }
+  .page .rightCol .component {
+    width: 100%;
+    min-height: calc(100vh);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px 0;
   }
   .page .rightCol::-webkit-scrollbar {
     display: none;
@@ -231,6 +239,12 @@
   position: absolute;
   right: 0;
   bottom: 10px;
+}
+
+.editcard {
+  width: 90%;
+  margin: auto;
+  max-width: unset;
 }
 
 .parallaxs {

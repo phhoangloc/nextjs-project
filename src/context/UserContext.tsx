@@ -27,14 +27,13 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     const [id, setId] = React.useState<string>('');
     const [i, setI] = React.useState<number>(0);
     const [username, setUsername] = React.useState<string>('');
-    const [avata, setAvata] = React.useState<string>('');
     const [infor, setInfor] = React.useState<{
         avata: string,
         fullname: string,
         address: string,
         phone: string
     }>({
-        avata: avata,
+        avata: "",
         fullname: "",
         address: "",
         phone: ""

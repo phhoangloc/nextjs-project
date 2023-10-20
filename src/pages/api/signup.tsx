@@ -4,9 +4,6 @@ import { userModel } from '@/model/user.model';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { isDataType } from '@/type/resultType';
 import connectMongoDB from '@/connect/database/mogoseDB';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-
 const nodemailer = require('nodemailer')
 const bcrypt = require('bcrypt')
 

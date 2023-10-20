@@ -2,12 +2,13 @@
 import { useState, useEffect } from 'react'
 import Loading from "./loading"
 import Paralax from "@/item/paralax"
-
+import { BookType } from '@/type/dataType'
+import { BlogType } from '@/type/dataType'
 export default function Home() {
 
 
-  const [book, setBook] = useState<any[]>([])
-  const [blog, setBlog] = useState<any[]>([])
+  const [book, setBook] = useState<BookType[]>([])
+  const [blog, setBlog] = useState<BlogType[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   const getBook = () => {
@@ -41,9 +42,9 @@ export default function Home() {
     loading ?
       <Loading /> :
       <div className='main'>
-        <Paralax data={[...book, ...blog].sort(function (a, b) {
-          const dateA = new Date(a.createDay);
-          const dateB = new Date(b.createDay);
+        <Paralax data={[...book, ...blog].sort(function (a: any, b: any) {
+          const dateA = new Date(a.createDate);
+          const dateB = new Date(b.createDate);
           return dateA > dateB ? 1 : -1;
         })} />
       </div>

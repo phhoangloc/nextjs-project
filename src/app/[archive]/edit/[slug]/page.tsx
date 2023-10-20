@@ -2,19 +2,21 @@
 import Loading from '@/app/loading'
 import NotFound from '@/app/not-found'
 import PageDetail from '@/item/PageDetail'
-import { BookType } from '@/type/dataType'
-import { BlogType } from '@/type/dataType'
+import EditBookCard from '@/item/editBookCard'
+import { BookType, BlogType } from '@/type/dataType'
 import React, { useEffect, useState } from 'react'
 
 type Props = {
     params: { archive: string, slug: string }
 }
 
-const BookDetail = ({ params }: Props) => {
+const Edit = ({ params }: Props) => {
+
     const [dataBook, setDataBook] = useState<BookType>()
     const [dataBlog, setDataBlog] = useState<BlogType>()
     const [loading, setLoading] = useState<boolean>(true)
     const [err, setErr] = useState<string | undefined>()
+    const [img, setImg] = useState<string | undefined>()
 
     const getBook = (slug: string) => {
         setLoading(true)
@@ -52,24 +54,23 @@ const BookDetail = ({ params }: Props) => {
     if (loading) {
         return <Loading />
     }
+
     switch (params.archive) {
         case "book":
             return <PageDetail
                 name={dataBook && dataBook.name}
-                img={dataBook && '/img/bookcover/' + dataBook.img}
+                img={img ? img : dataBook && dataBook.img}
                 author={dataBook && dataBook.author}
-                detail={dataBook && dataBook.detail}
+                component={<EditBookCard data={dataBook} preAvata={(imgPre) => setImg(imgPre)} />}
             />
         case "blog":
             return <PageDetail
                 name={dataBlog && dataBlog.title}
-                img={dataBlog && '/img/blog/' + dataBlog.cover}
-                detail={dataBlog && dataBlog.detail}
+                img={dataBlog && '/img/bookcover/' + dataBlog.cover}
             />
         default:
             return <NotFound />
     }
-
 }
 
-export default BookDetail
+export default Edit

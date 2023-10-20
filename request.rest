@@ -6,14 +6,14 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "username":"newmem",
+    "username":"hoangloc",
     "password":"123456"
 }
 ###
 
 GET http://localhost:3000/api/auth/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzU5NDE5MiwiZXhwIjoxNjk3NjgwNTkyfQ.l0bMvSr4ZKiqMgMmIuYcXEUhycs98Lu0x6UJmDlikyk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5Nzc2NDA2OSwiZXhwIjoxNjk3ODUwNDY5fQ.ogKIDoMu9tG4FSvYNQk3pNPpgAyaxW8ZpS0zo0PNyO0
 
 {
     "infor":{
@@ -26,9 +26,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3Y
 }
 ###
 
-GET http://localhost:3000/api/auth/book?id=6530eaa7bd23552513e6f648
+GET http://localhost:3000/api/auth/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzY3ODg2OCwiZXhwIjoxNjk3NzY1MjY4fQ.gVxup-3H-eMHRVr9KRT3MkPFfpQK4Vj9Uc0NRNKq6H4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5Nzc2NDA2OSwiZXhwIjoxNjk3ODUwNDY5fQ.ogKIDoMu9tG4FSvYNQk3pNPpgAyaxW8ZpS0zo0PNyO0
 ###
 
 POST http://localhost:3000/api/auth/book
@@ -40,8 +40,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3Y
         "author": "Lộc",
         "slug": "newbook"
 }
-
 ###
-DELETE  http://localhost:3000/api/auth/book?id=6530eaa7bd23552513e6f648
+
+PUT http://localhost:3000/api/auth/book?id=6531d3389043f5efbee8c878
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzY3ODg2OCwiZXhwIjoxNjk3NzY1MjY4fQ.gVxup-3H-eMHRVr9KRT3MkPFfpQK4Vj9Uc0NRNKq6H4
+
+{
+        "name": "Sách mới hơn ",
+        "author": "Lộc nè",
+        "slug": "newbook "
+}
+###
+
+DELETE  http://localhost:3000/api/auth/book?id=6531d3389043f5efbee8c878
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZmVhZWQ3YzE1NGNjNDgyYzRhMzM5NSIsImlhdCI6MTY5NzY3ODg2OCwiZXhwIjoxNjk3NzY1MjY4fQ.gVxup-3H-eMHRVr9KRT3MkPFfpQK4Vj9Uc0NRNKq6H4

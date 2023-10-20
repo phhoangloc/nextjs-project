@@ -2,7 +2,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '@/context/themeContext'
 import './style.css'
-import ButtonUpload from '@/component/ButtonUpload'
 import Image from 'next/image'
 
 export type PageType = {
