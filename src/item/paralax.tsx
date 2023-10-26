@@ -52,8 +52,8 @@ const Paralax = ({ data }: ParalaxType) => {
                 <div className={`parallax ${theme === "light" ? "lightBackground" : "darkBackground"}`}>
                     {data.map((item: any, index: any) =>
                         <div className="item" key={index}>
-                            {item.genre === "book" ? <BookCard name={item.name} img={item.img} genre={item.genre} slug={`book/${item.slug}`} pdf='' author='' owner='' detail='' /> : null}
-                            {item.genre === "blog" ? <BookCard name={item.title} img={item.cover} genre={item.genre} slug={`blog/${item.slug}`} pdf='' author='' owner='' detail='' /> : null}
+                            {item.genre === "book" ? <BookCard name={item.name} img={item.img} genre={item.genre} slug={`book/${item.slug}`} /> : null}
+                            {item.genre === "blog" ? <BookCard name={item.title} img={item.cover} genre={item.genre} slug={`blog/${item.slug}`} /> : null}
                         </div>
                     )}
                 </div> :

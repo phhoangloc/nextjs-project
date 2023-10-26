@@ -110,10 +110,6 @@
 
 .page .rightCol .component {
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 25px 0;
 }
 
@@ -151,7 +147,7 @@
   }
   .page .leftCol img {
     height: inherit;
-    max-height: 575px;
+    max-height: 375px;
     margin: auto;
     width: auto;
   }
@@ -206,14 +202,6 @@
     bottom: 0;
     left: 25%;
   }
-  .page .rightCol .component {
-    width: 100%;
-    min-height: calc(100vh);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 25px 0;
-  }
   .page .rightCol::-webkit-scrollbar {
     display: none;
   }
@@ -245,6 +233,22 @@
   width: 90%;
   margin: auto;
   max-width: unset;
+  position: relative;
+}
+
+.editcard h3 {
+  position: relative;
+  padding: 5px 0;
+}
+
+.editcard h3 svg {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.editcard h3 svg:hover {
+  color: var(--main);
 }
 
 .parallaxs {

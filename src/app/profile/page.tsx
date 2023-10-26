@@ -12,6 +12,7 @@ const Profile = () => {
     const [avata, setAvata] = useState<any>("")
 
     const [books, setbooks] = useState<any[]>([])
+    const [blogs, setblogs] = useState<any[]>([])
 
     useEffect(() => {
         const getBooks = () => {
@@ -26,10 +27,24 @@ const Profile = () => {
                     setbooks(data.data)
                 })
         }
+        const getBlogs = () => {
+            fetch("http://localhost:3000/api/auth/blog", {
+                headers: {
+                    "Authorization": localStorage.token,
+                    "Content-Type": "application/json"
+                },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    setblogs(data.data)
+                })
+        }
         getBooks()
+        getBlogs()
     }, [])
 
     const deviderBooks = books.map((item: any, index: any) => { return { name: item.name, url: "book/edit/" + item.slug } })
+    const deviderBlogs = blogs.map((item: any, index: any) => { return { name: item.title, url: "blog/edit/" + item.slug } })
     const reCom =
         id ?
             <PageDetail
@@ -42,7 +57,13 @@ const Profile = () => {
                         </div>
                         <div className='content'>
                             <h3>Edit Book</h3>
+                            <Dividers data={[{ name: "Create A Book", url: "book/edit/slug" }]} />
                             <Dividers data={deviderBooks} />
+                        </div>
+                        <div className='content'>
+                            <h3>Edit Blogs</h3>
+                            <Dividers data={[{ name: "Create A Blog", url: "blog/edit/slug" }]} />
+                            <Dividers data={deviderBlogs} />
                         </div>
                     </div>
                 }

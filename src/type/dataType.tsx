@@ -1,4 +1,5 @@
 export type BookType = {
+    _id: string,
     genre: string,
     img: string,
     pdf: string,
@@ -11,6 +12,7 @@ export type BookType = {
     createDate?: Date,
 }
 export type BlogType = {
+    _id: string,
     genre: string,
     cover: string,
     title: string,

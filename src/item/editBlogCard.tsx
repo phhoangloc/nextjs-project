@@ -4,27 +4,26 @@ import Input from '@/component/Input'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import ButtonUpload from '@/component/ButtonUpload'
-import { BookType } from '@/type/dataType'
+import { BlogType } from '@/type/dataType'
 import TextArea from '@/component/TextArea'
 import DeleteIcon from '@mui/icons-material/Delete';
 type Props = {
-    data: BookType | undefined
+    data: BlogType | undefined
     preAvata?: (e: any) => void
     editfun?: () => void
 }
 
-const EditBookCard = ({ data, preAvata, editfun }: Props) => {
+const EditBLogCard = ({ data, preAvata, editfun }: Props) => {
 
     const route = useRouter()
 
     const [edit, setEdit] = useState<boolean>(false)
     const [check, setCheck] = useState<boolean>(false)
 
-    const [name, setName] = useState<string>(data ? data.name : "")
+    const [title, setTitle] = useState<string>(data ? data.title : "")
     const [slug, setSlug] = useState<string>(data ? data.slug : "")
-    const [author, setAuthor] = useState<string>(data ? data.author : "")
     const [detail, setDetail] = useState<string>(data ? data.detail : "")
-    const [img, setImg] = useState<string>(data ? data.img : "")
+    const [cover, setCover] = useState<string>(data ? data.cover : "")
 
     const [avataFile, setAvataFile] = useState<any>()
     const [avataPre, setAvataPre] = useState()
@@ -36,7 +35,7 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
         reader.onloadend = function () {
             setAvataPre(reader.result)
             setAvataFile(file)
-            setImg(file.name)
+            setCover(file.name)
         }
     }
 
@@ -44,7 +43,7 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
-            return await fetch('http://localhost:3000/api/auth/image?pathname=img/bookcover', {
+            return await fetch('http://localhost:3000/api/auth/image?pathname=img/blog', {
                 method: 'POST',
                 body: formData,
             })
@@ -53,14 +52,14 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
                     return data
                 })
         } else {
-            return data?.img
+            return data?.cover
         }
     }
 
-    const createBook = async (body: any) => {
-        const img = await uploadImage(avataFile)
-        body.img = img
-        await fetch("http://localhost:3000/api/auth/book", {
+    const createBlog = async (body: any) => {
+        const cover = await uploadImage(avataFile)
+        body.cover = cover
+        await fetch("http://localhost:3000/api/auth/blog", {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${localStorage.token}`,
@@ -75,10 +74,10 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
             })
     }
 
-    const updateBook = async (body: any) => {
-        const img = await uploadImage(avataFile)
-        body.img = img
-        await fetch("http://localhost:3000/api/auth/book?id=" + data?._id, {
+    const updateBlog = async (body: any) => {
+        const cover = await uploadImage(avataFile)
+        body.cover = cover
+        await fetch("http://localhost:3000/api/auth/blog?id=" + data?._id, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${localStorage.token}`,
@@ -95,7 +94,7 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
 
     }
 
-    const deleteBook = async () => {
+    const deleteBlog = async () => {
         await fetch("http://localhost:3000/api/auth/book?id=" + data?._id, {
             headers: {
                 'Content-Type': 'application/json',
@@ -115,23 +114,17 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
 
     return (
         <div className="formcard editcard">
-            <h3>Edit Book <DeleteIcon onClick={() => deleteBook()} /></h3>
+            <h3>Edit Book <DeleteIcon onClick={() => deleteBlog()} /></h3>
             <Input
-                name='name'
-                onChange={(e) => setName(e.target.value)}
-                value={name}
+                name='title'
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
                 dis={edit && check}
             />
             <Input
                 name='slug'
                 onChange={(e) => setSlug(e.target.value)}
                 value={slug}
-                dis={edit && check}
-            />
-            <Input
-                name='author'
-                onChange={(e) => setAuthor(e.target.value)}
-                value={author}
                 dis={edit && check}
             />
             <TextArea
@@ -142,16 +135,16 @@ const EditBookCard = ({ data, preAvata, editfun }: Props) => {
             />
             <div className="avata">
                 <Input
-                    name='img'
-                    onChange={(e) => setImg(e.target.value)}
-                    value={img}
+                    name='cover'
+                    onChange={(e) => setCover(e.target.value)}
+                    value={cover}
                     dis={true}
                 />
                 <ButtonUpload onChange={(e) => getFile(e)} />
             </div>
-            <Button name={data ? "update" : "create"} onClick={() => { data ? updateBook({ name, slug, author, detail, img }) : createBook({ name, slug, author, detail, img }) }} />
+            <Button name={data ? "update" : "create"} onClick={() => { data ? updateBlog({ title, slug, detail, cover }) : createBlog({ title, slug, detail, cover }) }} />
         </div>
     )
 }
 
-export default EditBookCard
+export default EditBLogCard

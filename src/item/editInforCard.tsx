@@ -79,8 +79,8 @@ const EditInforCard = ({ data, preAvata }: Props) => {
             .then((data) => {
                 console.log(data)
                 route.refresh()
+                changeI()
             })
-        changeI()
     }
 
     useEffect(() => {

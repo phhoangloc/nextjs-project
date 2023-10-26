@@ -50,7 +50,11 @@ const Book = ({ params }: Props) => {
                 loading ?
                     <Loading /> :
                     <div className='main book'>
-                        <Paralax data={book} />
+                        <Paralax data={[...book].sort(function (a: any, b: any) {
+                            const dateA = new Date(a.createDate);
+                            const dateB = new Date(b.createDate);
+                            return dateA > dateB ? -1 : -1;
+                        })} />
                     </div>
             return reComBook
         case "blog":
@@ -58,7 +62,11 @@ const Book = ({ params }: Props) => {
                 loading ?
                     <Loading /> :
                     <div className='main book'>
-                        <Paralax data={blog} />
+                        <Paralax data={[...blog].sort(function (a: any, b: any) {
+                            const dateA = new Date(a.createDate);
+                            const dateB = new Date(b.createDate);
+                            return dateA > dateB ? -1 : -1;
+                        })} />
                     </div>
             return reComBlog
         default:

@@ -96,7 +96,7 @@
   font-size: 1rem;
   margin-top: 1rem;
   color: inherit;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .input .inputBox input:focus,

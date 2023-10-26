@@ -45,7 +45,7 @@ export default function Home() {
         <Paralax data={[...book, ...blog].sort(function (a: any, b: any) {
           const dateA = new Date(a.createDate);
           const dateB = new Date(b.createDate);
-          return dateA > dateB ? 1 : -1;
+          return dateA > dateB ? -1 : -1;
         })} />
       </div>
 

@@ -56,14 +56,14 @@ const BookDetail = ({ params }: Props) => {
         case "book":
             return <PageDetail
                 name={dataBook && dataBook.name}
-                img={dataBook && '/img/bookcover/' + dataBook.img}
+                img={dataBook && dataBook.img}
                 author={dataBook && dataBook.author}
                 detail={dataBook && dataBook.detail}
             />
         case "blog":
             return <PageDetail
                 name={dataBlog && dataBlog.title}
-                img={dataBlog && '/img/blog/' + dataBlog.cover}
+                img={dataBlog && dataBlog.cover}
                 detail={dataBlog && dataBlog.detail}
             />
         default:

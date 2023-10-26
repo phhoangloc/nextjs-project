@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { BookType } from '@/type/dataType'
 
 
-const BookCard = ({ img, name, genre, slug }: BookType) => {
+const BookCard = ({ img, name, genre, slug }: any) => {
 
     const router = useRouter()
     const { theme }: any = useContext(ThemeContext)
@@ -18,7 +18,7 @@ const BookCard = ({ img, name, genre, slug }: BookType) => {
             onMouseLeave={() => setHover(false)}
             onClick={() => router.push(`${slug}`)}>
             <div className="picture">
-                <Image src={`/img/${genre === "book" ? "bookcover" : "blog"}/${img}`} alt="" width={500} height={500} />
+                <Image src={img} alt="" width={500} height={500} />
             </div>
             <div className="title">
                 <p className='name'>{name}</p>
