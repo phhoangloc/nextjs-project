@@ -24,7 +24,7 @@ export default function Home() {
   const getBlog = () => {
     setLoading(true)
 
-    fetch(process.env.HOMEPAGE_URL + 'http://localhost:3000/api/blog')
+    fetch(process.env.HOMEPAGE_URL + '/api/blog')
       .then((res) => res.json())
       .then((data) => {
         setBlog(data.data)
