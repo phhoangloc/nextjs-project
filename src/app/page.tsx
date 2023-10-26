@@ -14,7 +14,7 @@ export default function Home() {
   const getBook = () => {
     setLoading(true)
 
-    fetch(process.env.HOMEPAGE_URL + 'api/book')
+    fetch('api/book')
       .then((res) => res.json())
       .then((data) => {
         setBook(data.data)
@@ -24,7 +24,7 @@ export default function Home() {
   const getBlog = () => {
     setLoading(true)
 
-    fetch(process.env.HOMEPAGE_URL + '/api/blog')
+    fetch('/api/blog')
       .then((res) => res.json())
       .then((data) => {
         setBlog(data.data)
