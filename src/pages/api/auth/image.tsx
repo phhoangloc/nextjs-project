@@ -30,7 +30,7 @@ const Image =
                     } else {
                         const file = files && files.file;
                         const newpathname = pathname ? pathname : ""
-                        const uploadDir = `./public/${newpathname}/`
+                        const uploadDir = `public/${newpathname}/`
                         const newPath = uploadDir + file[0].originalFilename;
                         const path = `/${newpathname}/` + file[0].originalFilename;
                         if (!fs.existsSync(uploadDir)) {
