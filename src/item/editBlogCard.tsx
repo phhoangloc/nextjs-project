@@ -43,7 +43,7 @@ const EditBLogCard = ({ data, preAvata, editfun }: Props) => {
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
-            return await fetch('http://localhost:3000/api/auth/image?pathname=img/blog', {
+            return await fetch('/api/auth/image?pathname=img/blog', {
                 method: 'POST',
                 body: formData,
             })
@@ -59,7 +59,7 @@ const EditBLogCard = ({ data, preAvata, editfun }: Props) => {
     const createBlog = async (body: any) => {
         const cover = await uploadImage(avataFile)
         body.cover = cover
-        await fetch("http://localhost:3000/api/auth/blog", {
+        await fetch("/api/auth/blog", {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${localStorage.token}`,
@@ -77,7 +77,7 @@ const EditBLogCard = ({ data, preAvata, editfun }: Props) => {
     const updateBlog = async (body: any) => {
         const cover = await uploadImage(avataFile)
         body.cover = cover
-        await fetch("http://localhost:3000/api/auth/blog?id=" + data?._id, {
+        await fetch("/api/auth/blog?id=" + data?._id, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${localStorage.token}`,
@@ -95,7 +95,7 @@ const EditBLogCard = ({ data, preAvata, editfun }: Props) => {
     }
 
     const deleteBlog = async () => {
-        await fetch("http://localhost:3000/api/auth/book?id=" + data?._id, {
+        await fetch("/api/auth/book?id=" + data?._id, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `${localStorage.token}`,

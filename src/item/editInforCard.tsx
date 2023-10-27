@@ -47,7 +47,7 @@ const EditInforCard = ({ data, preAvata }: Props) => {
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
-            return await fetch('http://localhost:3000/api/auth/image?pathname=img/avata', {
+            return await fetch('/api/auth/image?pathname=img/avata', {
                 method: 'POST',
                 body: formData,
             })
@@ -65,7 +65,7 @@ const EditInforCard = ({ data, preAvata }: Props) => {
         imgName ? infor.avata = imgName : null
         const body: any = { infor }
 
-        await fetch('http://localhost:3000/api/auth/user',
+        await fetch('/api/auth/user',
             {
                 headers: {
                     'Content-Type': 'application/json',
