@@ -16,8 +16,8 @@ const Auth =
         const token = authorization && authorization.split(" ")[1]
         const id = await jwt.verify(token, 'secretToken').id
         await userModel.findOne({ "_id": id }, "infor username books blogs")
-            .populate("books", "name")
-            .populate("blogs", "title")
+            // .populate("books", "name")
+            // .populate("blogs", "title")
             .catch((error: Error) => {
                 body.success = false
                 body.message = error.message

@@ -22,7 +22,7 @@ export default async function handler(
                 .find(query.author ? { "author": query.author } : {})
                 .sort(query.sort ? query.sort : {})
                 .limit(query.limit ? query.limit : {})
-                .populate("owner", "username")
+                // .populate("owner", "username")
                 .catch((error: Error) => {
                     body.success = false
                     body.message = error.message
