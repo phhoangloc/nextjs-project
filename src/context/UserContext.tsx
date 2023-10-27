@@ -40,7 +40,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     })
 
     const UserFecth = async () => {
-        await fetch("http://localhost:3000/api/auth/auth", {
+        await fetch("/api/auth/auth", {
             headers: {
                 'Authorization': `${localStorage.token}`,
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
             })
     }
     const NoFecth = async () => {
-        await fetch("http://localhost:3000/api/auth/checkuser?username=user", {
+        await fetch("api/auth/checkuser?username=user", {
             headers: {
                 'Authorization': `${localStorage.token}`,
                 'Content-Type': 'application/json'

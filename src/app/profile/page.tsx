@@ -16,7 +16,7 @@ const Profile = () => {
 
     useEffect(() => {
         const getBooks = () => {
-            fetch("http://localhost:3000/api/auth/book", {
+            fetch("/api/auth/book", {
                 headers: {
                     "Authorization": localStorage.token,
                     "Content-Type": "application/json"
@@ -28,7 +28,7 @@ const Profile = () => {
                 })
         }
         const getBlogs = () => {
-            fetch("http://localhost:3000/api/auth/blog", {
+            fetch("/api/auth/blog", {
                 headers: {
                     "Authorization": localStorage.token,
                     "Content-Type": "application/json"
@@ -43,8 +43,8 @@ const Profile = () => {
         getBlogs()
     }, [])
 
-    const deviderBooks = books.map((item: any, index: any) => { return { name: item.name, url: "book/edit/" + item.slug } })
-    const deviderBlogs = blogs.map((item: any, index: any) => { return { name: item.title, url: "blog/edit/" + item.slug } })
+    const deviderBooks = books && books.length && books.map((item: any, index: any) => { return { name: item.name, url: "book/edit/" + item.slug } })
+    const deviderBlogs = blogs && blogs.length && blogs.map((item: any, index: any) => { return { name: item.title, url: "blog/edit/" + item.slug } })
     const reCom =
         id ?
             <PageDetail
@@ -58,12 +58,12 @@ const Profile = () => {
                         <div className='content'>
                             <h3>Edit Book</h3>
                             <Dividers data={[{ name: "Create A Book", url: "book/edit/slug" }]} />
-                            <Dividers data={deviderBooks} />
+                            <Dividers data={deviderBooks || []} />
                         </div>
                         <div className='content'>
                             <h3>Edit Blogs</h3>
                             <Dividers data={[{ name: "Create A Blog", url: "blog/edit/slug" }]} />
-                            <Dividers data={deviderBlogs} />
+                            <Dividers data={deviderBlogs || []} />
                         </div>
                     </div>
                 }

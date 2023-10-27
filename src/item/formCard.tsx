@@ -35,7 +35,7 @@ const FormCard = ({ name }: Props) => {
             errors.username = 'username must be at least than 6'
         }
         if (username) {
-            const isUsername = await fetch("http://localhost:3000/api/auth/checkuser?username=" + username)
+            const isUsername = await fetch("/api/auth/checkuser?username=" + username)
                 .then((res) => res.json())
                 .then((data) => data)
             if (isUsername) { errors.username = "this username is existed" }
@@ -44,7 +44,7 @@ const FormCard = ({ name }: Props) => {
             errors.email = 'Email is invalid';
         }
         if (email) {
-            const isEmail = await fetch("http://localhost:3000/api/auth/checkuser?email=" + email)
+            const isEmail = await fetch("/api/auth/checkuser?email=" + email)
                 .then((res) => res.json())
                 .then((data) => data)
             if (isEmail) { errors.email = "this email is existed" }
@@ -58,7 +58,7 @@ const FormCard = ({ name }: Props) => {
     }
 
     const login = async (body: any) => {
-        await fetch("http://localhost:3000/api/login", {
+        await fetch("/api/login", {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -76,7 +76,7 @@ const FormCard = ({ name }: Props) => {
     }
 
     const signup = async (body: any) => {
-        await fetch("http://localhost:3000/api/signup", {
+        await fetch("/api/signup", {
             headers: {
                 'Content-Type': 'application/json',
             },

@@ -24,7 +24,7 @@ const Edit = ({ params }: Props) => {
     //getData
     const getBook = (slug: string) => {
         setLoading(true)
-        fetch('http://localhost:3000/api/book?slug=' + slug)
+        fetch('/api/book?slug=' + slug)
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) { setDataBook(data.data[0]) }
@@ -37,7 +37,7 @@ const Edit = ({ params }: Props) => {
     }
     const getBlog = (slug: string) => {
         setLoading(true)
-        fetch('http://localhost:3000/api/blog?slug=' + slug)
+        fetch('/api/blog?slug=' + slug)
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) { setDataBlog(data.data[0]) }

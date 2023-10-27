@@ -8,17 +8,19 @@ const Dividers = ({ data, func }: DividersType) => {
     return (
         <div className='dividers'>
             {
-                data.map((item, index) =>
-                    <div className='divider'
-                        key={index}
-                        onClick={() => {
-                            item && item.url && router.push(item.url)
-                            item && item.itemfunc && item.itemfunc();
-                            func && func();
-                        }}>
-                        <p className='name'>{item.name}</p>
-                    </div>
-                )
+                data && data.length ?
+                    data.map((item, index) =>
+                        <div className='divider'
+                            key={index}
+                            onClick={() => {
+                                item && item.url && router.push(item.url)
+                                item && item.itemfunc && item.itemfunc();
+                                func && func();
+                            }}>
+                            <p className='name'>{item.name}</p>
+                        </div>
+                    )
+                    : null
             }
         </div>
     )

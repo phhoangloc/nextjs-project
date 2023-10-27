@@ -16,7 +16,7 @@ const Book = ({ params }: Props) => {
     const getBook = () => {
         setLoading(true)
 
-        fetch('http://localhost:3000/api/book')
+        fetch('/api/book')
             .then((res) => res.json())
             .then((data) => {
                 setBook(data.data)
@@ -26,7 +26,7 @@ const Book = ({ params }: Props) => {
     const getBlog = () => {
         setLoading(true)
 
-        fetch('http://localhost:3000/api/blog')
+        fetch('/api/blog')
             .then((res) => res.json())
             .then((data) => {
                 setBlog(data.data)

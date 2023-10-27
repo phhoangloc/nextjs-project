@@ -21,7 +21,7 @@ const Header = () => {
     const [value, setValue] = useState<string>("menu")
 
     useEffect(() => {
-        localStorage && localStorage.token ? UserFecth() : NoFecth()
+        localStorage && localStorage.token ? UserFecth() : null
     }, [i])
 
     return (

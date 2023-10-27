@@ -7,13 +7,13 @@ import connectMongoDB from '@/connect/database/mogoseDB';
 const nodemailer = require('nodemailer')
 const bcrypt = require('bcrypt')
 
-export const transporter = nodemailer.createTransport({ // config mail server
+export const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
-        user: 'ph.hoangloc@gmail.com', //Tài khoản gmail vừa tạo
-        pass: 'trdecbcnuzkaduob' //Mật khẩu tài khoản gmail vừa tạo
+        user: 'ph.hoangloc@gmail.com',
+        pass: 'trdecbcnuzkaduob'
     },
 });
 
