@@ -47,7 +47,7 @@ const EditInforCard = ({ data, preAvata }: Props) => {
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
-            return await fetch('/api/auth/image?pathname=img/avata', {
+            return await fetch('/api/auth/avata?path=avata', {
                 method: 'POST',
                 body: formData,
             })
@@ -61,8 +61,8 @@ const EditInforCard = ({ data, preAvata }: Props) => {
     }
 
     const saveInfor = async (infor: any) => {
-        const imgName: string = await uploadImage(avataFile)
-        imgName ? infor.avata = imgName : null
+        const imgName: any = await uploadImage(avataFile)
+        imgName && imgName.url ? infor.avata = imgName.url : null
         const body: any = { infor }
 
         await fetch('/api/auth/user',
@@ -77,7 +77,6 @@ const EditInforCard = ({ data, preAvata }: Props) => {
             })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 route.refresh()
                 changeI()
             })
